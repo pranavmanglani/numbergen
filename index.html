@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Number Lookup</title>
+<style>
+body{
+    font-family:Arial;
+    max-width:700px;
+    margin:40px auto;
+    padding:20px;
+}
+input{
+    width:100%;
+    padding:12px;
+    margin-bottom:10px;
+}
+button{
+    padding:12px 20px;
+    cursor:pointer;
+}
+pre{
+    background:#f4f4f4;
+    padding:15px;
+    overflow:auto;
+}
+</style>
+</head>
+<body>
+<h2>Number Lookup</h2>
+<input
+    id="mobile"
+    placeholder="Enter Number"
+/>
+
+<input
+    id="accessKey"
+    placeholder="Enter Access Key"
+/>
+
+<button onclick="lookup()">
+Search
+</button>
+
+<pre id="result"></pre>
+
+<script>
+
+async function lookup() {
+
+    const mobile =
+      document.getElementById("mobile").value.trim();
+
+    const accessKey =
+      document.getElementById("accessKey").value.trim();
+
+    const result =
+      document.getElementById("result");
+
+    result.textContent = "Loading...";
+
+    try {
+
+        const response = await fetch(
+          "https://ltifkzmhynhaawutlcjt.supabase.co/functions/v1/bright-service",
+          {
+            method:"POST",
+            headers:{
+              "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+              mobile,
+              accessKey
+            })
+          }
+        );
+
+        const data = await response.json();
+
+        result.textContent =
+          JSON.stringify(data,null,2);
+
+    } catch(err) {
+
+        result.textContent =
+          err.message;
+
+    }
+}
+
+</script>
+
+</body>
+</html>
