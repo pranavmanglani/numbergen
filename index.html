@@ -4,25 +4,42 @@
 <meta charset="UTF-8">
 <title>Number Lookup</title>
 <style>
-body{
-    font-family:Arial;
-    max-width:700px;
-    margin:40px auto;
-    padding:20px;
+body {
+    font-family: Arial, sans-serif;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
 }
-input{
-    width:100%;
-    padding:12px;
-    margin-bottom:10px;
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
 }
-button{
-    padding:12px 20px;
-    cursor:pointer;
+button {
+    padding: 12px 20px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    /* Set up gradient background and transition */
+    background-image: linear-gradient(to left, red, yellow, orange);
+    background-size: 200% 100%;
+    background-position: right center;
+    transition: background-position 0.4s ease, transform 0.2s ease;
 }
-pre{
-    background:#f4f4f4;
-    padding:15px;
-    overflow:auto;
+
+button:hover {
+    /* Shift gradient position on hover to animate the colors */
+    background-position: left center;
+    transform: scale(1.03);
+}
+
+pre {
+    background: #f4f4f4;
+    padding: 15px;
+    overflow: auto;
 }
 </style>
 </head>
@@ -102,9 +119,4 @@ async function lookup() {
 </script>
 
 </body>
-<style>
-    .button:hover{
-        backround-color: linear-gradient(to left, red, yellow, orange)
-    }
-</style>
 </html>
