@@ -30,6 +30,22 @@ button {
     transition: background-position 0.4s ease, transform 0.2s ease;
 }
 
+.rounded-input {
+  /* This creates the rounded corners */
+  border-radius: 25px; 
+  
+  /* Additional styles to make it look clean */
+  border: 2px solid #ccc;
+  padding: 10px 20px;
+  width: 250px;
+  outline: none; /* Removes the default browser border on click */
+}
+
+/* Optional: Adds a nice effect when a user clicks into the field */
+.rounded-input:focus {
+  border-color: #007bff;
+}
+
 button:hover {
     /* Shift gradient position on hover to animate the colors */
     background-position: left center;
@@ -48,11 +64,13 @@ pre {
 <input
     id="mobile"
     placeholder="Enter Number"
+    class="rounded-input"
 />
 
 <input
     id="accessKey"
     placeholder="Enter Access Key"
+    class="rounded-input"
 />
 
 <button onclick="lookup()">
